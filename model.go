@@ -1,8 +1,6 @@
 package main
 
 type ImportApiOptions struct {
-	TargetEndpointFolderID        int64  `json:"targetEndpointFolderId"`
-	TargetSchemaFolderID          int64  `json:"targetSchemaFolderId"`
 	EndpointOverwriteBehavior     string `json:"endpointOverwriteBehavior"`
 	SchemaOverwriteBehavior       string `json:"schemaOverwriteBehavior"`
 	UpdateFolderOfChangedEndpoint bool   `json:"updateFolderOfChangedEndpoint"`
