@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 )
 
-func ReadConfig() (*ApiFoxConfig, string) {
+func ReadConfig() (*ApiFoxConfig, []byte) {
 	currentDir, ce := os.Getwd()
 	if ce != nil {
 		panic(ce)
@@ -22,16 +22,27 @@ func ReadConfig() (*ApiFoxConfig, string) {
 		panic(err)
 	}
 
-	swagger, se := os.ReadFile(filepath.Join(currentDir, config.Body.Input))
-	if se != nil {
-		panic(se)
+	b, be := os.ReadFile(filepath.Join(currentDir, config.Body.Input))
+	if be != nil {
+		panic(be)
 	}
-	config.Body.Input = string(swagger)
+
+	var swagger interface{}
+	if err := json.Unmarshal(b, &swagger); err != nil {
+		panic(err)
+	}
+
+	swaggerStr, sse := json.Marshal(swagger)
+	if sse != nil {
+		panic(sse)
+	}
+
+	config.Body.Input = string(swaggerStr)
 
 	body, be := json.Marshal(config.Body)
 	if be != nil {
 		panic(be)
 	}
 
-	return &config, string(body)
+	return &config, body
 }
