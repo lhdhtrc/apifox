@@ -37,5 +37,9 @@ func main() {
 		panic(err)
 		return
 	}
-	fmt.Println(string(b))
+	if res.StatusCode == 200 {
+		fmt.Println("sync success")
+	} else {
+		fmt.Println(string(b))
+	}
 }
