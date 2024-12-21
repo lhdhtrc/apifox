@@ -5,4 +5,7 @@
 - 当前目录下必须有`apifox.config.json`
 - 执行`apifox`
 
+### 打包
+`go build -ldflags "-s -w"`
+
 [参考](https://apifox-openapi.apifox.cn/api-173409873)
