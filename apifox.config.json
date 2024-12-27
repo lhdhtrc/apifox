@@ -1,0 +1,13 @@
+{
+  "body": {
+    "input": "swagger/api/apidocs.swagger.json",
+    "options":
+      {
+        "endpointOverwriteBehavior": "AUTO_MERGE",
+        "schemaOverwriteBehavior": "AUTO_MERGE",
+        "prependBasePath": true
+      }
+  },
+  "project_id": "",
+  "token": ""
+}
